@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <base target="_top">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0d14">
+  <title>RAYYGMAIL — Dashboard Setoran</title>
+  <?!= include('Styles'); ?>
+</head>
+<body>
+  <div class="ambient ambient-one"></div><div class="ambient ambient-two"></div>
+  <header class="topbar">
+    <a class="brand" href="#home"><span class="brand-icon">R</span><span>RAYY<span class="accent">GMAIL</span><small>SUBMISSION PLATFORM</small></span></a>
+    <nav class="nav-links"><a href="#home">Beranda</a><a href="#features">Fitur</a><a href="#dashboard">Dashboard</a></nav>
+    <div class="top-actions"><button class="btn btn-ghost" id="openLogin">Masuk</button><button class="btn btn-primary" id="openRegister">Daftar <span>↗</span></button></div>
+  </header>
+  <main class="container">
+    <section class="hero" id="home">
+      <div class="hero-copy"><div class="eyebrow"><span class="pulse"></span> PLATFORM PENGELOLAAN PENGAJUAN</div>
+        <h1>Kelola pengajuan.<br><span class="gradient-text">Pantau semuanya.</span></h1>
+        <p class="hero-desc">Satu dashboard untuk mengirim pengajuan layanan, memantau status, dan melihat riwayat saldo secara transparan.</p>
+        <div class="hero-actions"><button class="btn btn-primary btn-lg" id="heroRegister">Mulai Sekarang <span>→</span></button><a class="btn btn-outline btn-lg" href="#features">Jelajahi fitur</a></div>
+        <div class="trust-row"><span>✦ Dashboard sederhana</span><span>✦ Status transparan</span><span>✦ Admin terpisah</span></div>
+      </div>
+      <div class="hero-visual"><div class="orbit orbit-a"></div><div class="orbit orbit-b"></div><div class="preview-card"><div class="preview-head"><span class="window-dots"><i></i><i></i><i></i></span><span class="live-tag"><b></b> SYSTEM READY</span></div><div class="preview-title">Ringkasan akun <span class="mini-avatar">R</span></div><div class="preview-balance"><span>Total saldo</span><strong>Rp <span id="heroBalance">0</span></strong><small>Saldo diperbarui setelah verifikasi admin</small></div><div class="preview-stats"><div><span class="stat-icon gold">↗</span><strong id="heroSubmissions">0</strong><small>Pengajuan</small></div><div><span class="stat-icon green">✓</span><strong id="heroApproved">0</strong><small>Disetujui</small></div></div><div class="preview-activity"><span class="activity-dot"></span><span>Dashboard siap digunakan</span><span class="activity-time">SEKARANG</span></div></div><div class="floating-chip chip-top">✦ <span>Secure dashboard</span></div><div class="floating-chip chip-bottom"><span class="chip-check">✓</span><span>Pengelolaan transparan</span></div></div>
+    </section>
+    <section class="feature-strip" id="features"><article><span class="feature-icon">▤</span><div><h3>Pengajuan Terstruktur</h3><p>Kirim pengajuan tanpa memberikan kata sandi Gmail atau OTP.</p></div></article><article><span class="feature-icon">◷</span><div><h3>Pantau Status</h3><p>Lihat status Pending, Disetujui, atau Ditolak.</p></div></article><article><span class="feature-icon">◈</span><div><h3>Riwayat Transparan</h3><p>Periksa riwayat aktivitas dan perubahan saldo.</p></div></article></section>
+    <section class="auth-panel hidden" id="authPanel"><div class="section-heading"><div><div class="eyebrow">AKSES PENGGUNA</div><h2 id="authTitle">Selamat datang kembali</h2><p id="authSubtitle">Masuk ke dashboard RAYYGMAIL.</p></div><button class="icon-btn" id="closeAuth" aria-label="Tutup">✕</button></div>
+      <div class="auth-tabs"><button class="auth-tab active" data-mode="login">Masuk</button><button class="auth-tab" data-mode="register">Buat akun</button></div>
+      <form id="authForm" class="form-grid"><label id="nameWrap" class="hidden">Nama lengkap<input id="authName" maxlength="80" autocomplete="name" placeholder="Nama kamu"></label><label>Email<input id="authEmail" type="email" maxlength="150" autocomplete="email" required placeholder="nama@email.com"></label><label>Kata sandi akun RAYYGMAIL<input id="authPassword" type="password" minlength="8" autocomplete="current-password" required placeholder="Minimal 8 karakter"></label><p class="privacy-note">Gunakan kata sandi khusus untuk akun RAYYGMAIL. Kami tidak meminta kata sandi Gmail, OTP, atau kode pemulihan.</p><button class="btn btn-primary btn-wide" id="authSubmit" type="submit">Masuk ke dashboard →</button></form><p class="message" id="authMessage" role="status"></p>
+    </section>
+    <section class="dashboard hidden" id="dashboard"><div class="section-heading"><div><div class="eyebrow">PERSONAL WORKSPACE</div><h2>Dashboard <span class="accent">Pengguna</span></h2><p>Halo, <strong id="userName">Pengguna</strong>. Berikut ringkasan akunmu.</p></div><button class="btn btn-outline" id="logoutBtn">Keluar ↗</button></div>
+      <div class="dashboard-grid"><article class="metric-card balance-card"><div class="metric-top"><span>Saldo tersedia</span><span class="metric-symbol">◈</span></div><strong id="balanceValue">Rp 0</strong><small>Penyesuaian saldo dicatat oleh admin</small></article><article class="metric-card"><div class="metric-top"><span>Total pengajuan</span><span class="metric-symbol">▤</span></div><strong id="submissionCount">0</strong><small>Seluruh pengajuan kamu</small></article><article class="metric-card"><div class="metric-top"><span>Disetujui</span><span class="metric-symbol green-text">✓</span></div><strong id="approvedCount">0</strong><small>Pengajuan selesai diperiksa</small></article></div>
+      <div class="workspace-grid"><div class="panel"><div class="panel-heading"><div><h3>Buat pengajuan</h3><p>Isi informasi yang diperlukan saja.</p></div><span class="panel-icon">＋</span></div><form id="submissionForm" class="form-grid"><label>Jenis pengajuan<select id="submissionType"><option>Setoran Gmail</option><option>Pertanyaan layanan</option></select></label><label>ID referensi / email kontak<input id="submissionReference" maxlength="180" required placeholder="ID referensi atau email kontak"></label><label>Catatan tambahan <span class="optional">Opsional</span><textarea id="submissionNote" maxlength="500" rows="3" placeholder="Jelaskan kebutuhanmu tanpa data rahasia"></textarea></label><div class="warning-note">⚠ Jangan masukkan kata sandi Gmail, OTP, kode pemulihan, atau data login.</div><button class="btn btn-primary btn-wide" type="submit">Kirim pengajuan <span>→</span></button></form><p class="message" id="submissionMessage" role="status"></p></div>
+      <div class="panel"><div class="panel-heading"><div><h3>Aktivitas terbaru</h3><p>Status pengajuan terkini.</p></div><button class="text-btn" id="refreshUser">↻ Muat ulang</button></div><div id="recentActivity" class="activity-list"><div class="empty-state">Masuk untuk melihat aktivitas.</div></div></div></div>
+      <div class="panel table-panel"><div class="panel-heading"><div><h3>Riwayat pengajuan</h3><p>Daftar pengajuan yang pernah dikirim.</p></div></div><div class="table-wrap"><table><thead><tr><th>Tanggal</th><th>Jenis</th><th>Referensi</th><th>Status</th><th>Catatan admin</th></tr></thead><tbody id="submissionRows"><tr><td colspan="5" class="empty-state">Belum ada data.</td></tr></tbody></table></div></div>
+      <div class="panel table-panel"><div class="panel-heading"><div><h3>Riwayat saldo</h3><p>Catatan transaksi yang dibuat admin.</p></div></div><div class="table-wrap"><table><thead><tr><th>Tanggal</th><th>Jenis</th><th>Keterangan</th><th>Nominal</th><th>Status</th></tr></thead><tbody id="transactionRows"><tr><td colspan="5" class="empty-state">Belum ada transaksi.</td></tr></tbody></table></div></div>
+    </section>
+    <section class="bottom-cta"><div><div class="eyebrow">RAYYGMAIL WORKSPACE</div><h2>Semua aktivitas dalam satu tempat.</h2><p>Gunakan akun RAYYGMAIL untuk memantau pengajuan dan riwayatmu.</p></div><button class="btn btn-primary btn-lg" id="bottomRegister">Buat akun gratis ↗</button></section>
+  </main>
+  <footer class="footer"><a class="brand" href="#home"><span class="brand-icon">R</span><span>RAYY<span class="accent">GMAIL</span><small>SUBMISSION PLATFORM</small></span></a><span>© <span id="year"></span> RAYYGMAIL. Gunakan layanan dengan bijak.</span><a href="?page=admin" class="admin-link">Akses admin</a></footer>
+  <div class="toast" id="toast" role="status"></div>
+  <script>const APP_URL = <?!= JSON.stringify(appUrl) ?>;</script>
+  <?!= include('App.js'); ?>
+</body>
+</html>
